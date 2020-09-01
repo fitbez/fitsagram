@@ -41,27 +41,23 @@ class App extends Component {
         return post;
       }),
     });
-
-    // return this.state.posts;
-    // console.log(this.state.posts);
   };
 
   render() {
     return (
       <div className="App">
         {this.state.posts.map((post) => (
-          <div key={post.id}>
-            <div>
-              {post.comments.map((comment) => (
-                <div key={comment.id}>
-                  <button>x</button>
-                  <p>{comment.comment}</p>
-                </div>
-              ))}
-            </div>
-            <button>X</button>
+          <div className="post" key={post.id}>
             <img src={post.photo} alt="vacation" />
             <Comment posts={post} handleAddComment={this.handleAddComment} />
+            <div className="comment">
+              {post.comments.map((comment) => (
+                <li key={comment.id}>
+                  <p>{comment.comment}</p>
+                  <div className="clear">Clear</div>
+                </li>
+              ))}
+            </div>
           </div>
         ))}
       </div>

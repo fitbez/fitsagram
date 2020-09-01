@@ -10,7 +10,6 @@ export default class Comment extends Component {
     this.setState({
       comment: e.target.value,
     });
-
     console.log(this.state.comment);
   };
 
@@ -24,16 +23,40 @@ export default class Comment extends Component {
   render() {
     return (
       <div>
-        <input onChange={this.onChange} type="text" placeholder="comment" />
+        <input
+          style={inputStyle}
+          onChange={this.onChange}
+          type="text"
+          placeholder="comment"
+        />
         <button
+          style={buttonStyle}
+          disabled={!this.state.comment}
           onClick={() => {
             this.onSubmit(this.props.posts.id);
             console.log(this.props.posts);
           }}
         >
-          + Add Comment
+          Comment
         </button>
       </div>
     );
   }
 }
+
+const inputStyle = {
+  padding: "10px 5px",
+  margin: "7px",
+  width: "300px",
+  border: "none",
+  borderBottom: "1px solid #333",
+  outline: "none",
+  fontSize: "20px",
+};
+
+const buttonStyle = {
+  padding: "10px 15px",
+  background: "#d04115",
+  border: "none",
+  color: "#fff",
+};
